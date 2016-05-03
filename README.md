@@ -20,38 +20,65 @@ You should be comfortable selecting elements by tag name (eg. 'h1'), class name 
 
 1. Select the element that contains the profile image (hint: look for the class).  Change the `src` attribute so it points to a picture of your choosing instead (hint: use [attr()](http://api.jquery.com/attr/)).
 
+$('aside img').attr('src', 'http://placekitten.com/g/400/400');
+
   PROTIP: use the inspector to learn the dimensions of the current profile image and use a placeholder image service such as [Place Kitten](https://placekitten.com/) to get an image of the same size.
 
 2. Select the heading that says "Panda the Bear" and change it to your own name. (hint: use [text()](http://api.jquery.com/text/))
 
+$('div h1').text('Amin Shafiee')
+
 3. Panda the Bear is lying about their skills!  Take the "time travel" skill off the page to satisfy your personal sense of justice.  Use your googling and docs-skimming skillz to find a jQuery function that will allow you to remove elements from the DOM.  (hint: there are multiple ways of doing this, but the [parent()](http://api.jquery.com/parent/) function might be useful when it comes to selecting the right element)
+
+$('#time-travel').parent().remove();
 
 4. Change the colour of the body. (hint: use [css()](http://api.jquery.com/css/))
 
+$('body').css('color', 'orange');
+
 5. Change the colour used by the `highlight` class.
+
+$('.highlight').css('color', 'Gray');
 
 6. Find a way to select the round icons in the sidebar and then change their colour.
 
+$('a.action-icon-bg').css('background', 'blue');
+
 7. Scroll down to the contact form.  Change the placeholder attribute of the name field to "identify yourself".
+
+$('input#name.contact-info').attr('placeholder', 'Identify yourself');
 
 8. Change the value attribute of the name field to "your nemesis".
 
+$('input#name.contact-info').val('Your nemesis');
+
 9. Change the value attribute of the email field to "koalathebear@gmail.com".
 
+$('input#email.contact-info').val('koalathebear@gmail.com');
+
 10. Change the value of the submit button on the contact form to "En garde!".
+
+$('input#submit').attr('value', 'En garde!');
 
   Bonus points: try experimenting with both the attr() function and the val() function to find different ways of doing this.
 
 11. We should stop Koala from sending an email to Panda that they might regret!  Find a way to disable the submit button (hint: familiarize yourself with the [disabled attribute](http://www.w3schools.com/tags/att_input_disabled.asp)).
 
+$('input#submit').prop('disabled', true);
+
 12. We should help Panda protect their privacy by clearing their personal details from the sidebar.  You can use [empty()](https://api.jquery.com/empty/) to do this.
 
+$('span.bio-info-value').empty();
 
 ###Adding Elements to the DOM
 
 13. That drawing of Pikachu is really cute.  Let’s duplicate it using [clone()](https://api.jquery.com/clone/) and insert it at the bottom of the page using [insertAfter()](http://api.jquery.com/insertafter/) or [appendTo()](http://api.jquery.com/appendto/).
 
+$('#right-image img').clone().appendTo('form');
+
 14. Wow, that was so satisfying I think we should do it 10 more times.  Use a `for` loop to help you do this.
+
+for (i=0; i<10;i++){$('#right-image').clone().appendTo('form')};
 
 15. Let’s add a message about when the page was last updated.  We'll do this by appending a new `<li>` element to the `<ul>` in the sidebar (you might need to refresh the page to bring back the list items that we emptied out earlier).  
 
@@ -67,7 +94,7 @@ You should be comfortable selecting elements by tag name (eg. 'h1'), class name 
 
    Now we need a new `<span>` tag to go inside the `<li>` we just made.  This span will eventually go in the left column below 'Phone'.
 
-  `var leftSpan = document.createElement('span');` 
+  `var leftSpan = document.createElement('span');`
 
   Next we need to make a "text node" in order to put text inside our new span.  A text node is a chunk of plain text that lives inside some HTML tag in the DOM.
 
